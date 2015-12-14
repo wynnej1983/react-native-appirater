@@ -1,0 +1,29 @@
+{
+    "author": "Jonathan Wynne",
+    "dependencies": {
+        "react-native": "^0.13.2"
+    },
+    "description": "react native wrapper around ios app review library",
+    "devDependencies": {
+        "react-native": "^0.13.0"
+    },
+    "keywords": [
+        "react-native",
+        "ios"
+    ],
+    "license": "MIT",
+    "main": "index.js",
+    "name": "react-native-appirater",
+    "peerDependencies": {
+        "react-native": "^0.13.2"
+    },
+    "private": "true",
+    "repository": {
+        "type": "git",
+        "url": "github.com/wynnej1983/react-native-appirater"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "version": "0.0.1"
+}
