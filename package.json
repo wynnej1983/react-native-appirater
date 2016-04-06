@@ -12,7 +12,7 @@
         "ios"
     ],
     "license": "MIT",
-    "main": "appirater.ios.js",
+    "main": "appirater.js",
     "name": "react-native-appirater",
     "peerDependencies": {
         "react-native": "^0.13.2"

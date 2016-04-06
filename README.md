@@ -77,7 +77,9 @@ Copy the /res/values/appirater-settings.xml from the AppiraterAndroid library in
 //import module
 import Appirater from 'react-native-appirater';
 
-//play sound
-Appirater.;
+//set app id
+`Appirater.setAppId(id);`
+//register user significant event
+`Appirater.userDidSignificantEvent();`
 
 ```
