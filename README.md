@@ -46,11 +46,15 @@ public class MainActivity extends Activity {
 
     @Override
     protected List<ReactPackage> getPackages() {
-      RNAppirater.appLaunched(this); // <--- call this on app launch
       return Arrays.<ReactPackage>asList(
         new MainReactPackage(),
         new RNAppirater()            //  <--- add here
       );
+    }
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+      RNAppirater.appLaunched(this); // <--- call this on app launch, add these 3 lines
     }
   }
 }
