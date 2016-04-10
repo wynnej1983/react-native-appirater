@@ -22,7 +22,7 @@ In XCode, in the project navigator, select your project. Add the lib*.a from the
 
 ```gradle
 ...
-include ':RNAppirater', ':app'
+include ':RNAppirater'
 project(':RNAppirater').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-appirater/android')
 ```
 
@@ -44,17 +44,14 @@ import com.wynnej1983.RNAppirater.*; // <--- import
 public class MainActivity extends Activity {
   ...
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState){
-    ...
-    mReactInstanceManager = ReactInstanceManager.builder()
-      .setApplication(getApplicatio)
-      ...
-      .addPackage(new MainReactPackage())
-      .addPackage(new RNAppirater())   //  <--- add here
-      ...
-
-      Appirater.appLaunched(this);  //  <--- call this on app launch
+    @Override
+    protected List<ReactPackage> getPackages() {
+      RNAppirater.appLaunched(this); // <--- call this on app launch
+      return Arrays.<ReactPackage>asList(
+        new MainReactPackage(),
+        new RNAppirater()            //  <--- add here
+      );
+    }
   }
 }
 ```
