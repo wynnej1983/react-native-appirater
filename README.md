@@ -52,9 +52,10 @@ public class MainActivity extends Activity {
       );
     }
     
-    @Override
+    @Override  // <--- add this method, the next 4 lines
     protected void onCreate(Bundle savedInstanceState) {
-      RNAppirater.appLaunched(this); // <--- call this on app launch, add these 3 lines
+      super.onCreate(savedInstanceState);
+      RNAppirater.appLaunched(this);
     }
   }
 }
