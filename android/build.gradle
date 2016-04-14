@@ -1,20 +1,41 @@
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:2.0.+'
+  }
+}
 apply plugin: 'com.android.library'
 
-android {
-  compileSdkVersion 23
-    buildToolsVersion "23.0.1"
-
-    defaultConfig {
-      minSdkVersion 16
-        targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
-        ndk {
-          abiFilters "armeabi-v7a", "x86"
-        }
-    }
+repositories {
+  mavenCentral()
 }
 
 dependencies {
+  compile fileTree(include: '*.jar', dir: 'libs')
+  compile 'com.android.support:appcompat-v7:23.+'
   compile 'com.facebook.react:react-native:0.19.+'
+}
+
+android {
+  compileSdkVersion 23
+  buildToolsVersion '23.0.3'
+  defaultConfig {
+    minSdkVersion 16
+    targetSdkVersion 22
+    versionCode 1
+    versionName "1.0"
+  }
+}
+
+task installArchives(type: Upload) {
+  description "Installs the artifacts to the local Maven repository."
+  apply plugin: 'maven'
+  repositories.mavenInstaller {
+    configuration = configurations.default
+    pom.groupId = 'com.wynnej1983'
+    pom.artifactId = 'appirater'
+    pom.version = '1.0.0'
+  }
 }

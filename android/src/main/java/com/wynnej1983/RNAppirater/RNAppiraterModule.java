@@ -38,7 +38,7 @@ public class RNAppiraterModule extends ReactContextBaseJavaModule {
   private static final String PREF_APP_VERSION_CODE = "versioncode";
   private static final String PREF_APP_LOVE_CLICKED= "loveclicked";
 
-  ReactApplicationContext reactContext;
+  private static ReactApplicationContext reactContext;
 
   public RNAppiraterModule(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -96,8 +96,6 @@ public class RNAppiraterModule extends ReactContextBaseJavaModule {
       if(testMode){
           if (prefs.getBoolean(PREF_APP_LOVE_CLICKED, false)) {
               showRateDialog(reactContext,editor);
-          } else {
-              showLoveDialog(reactContext, editor);
           }
         return;
       }
@@ -142,16 +140,12 @@ public class RNAppiraterModule extends ReactContextBaseJavaModule {
       if(date_reminder_pressed == 0){
                   if (prefs.getBoolean(PREF_APP_LOVE_CLICKED, false)){
                       showRateDialog(reactContext, editor);
-                  } else {
-                      showLoveDialog(reactContext, editor);
                   }
       }else{
         long remindMillisecondsToWait = reactContext.getResources().getInteger(R.integer.appirator_days_before_reminding) * 24 * 60 * 60 * 1000L;
         if(System.currentTimeMillis() >= (remindMillisecondsToWait + date_reminder_pressed)){
                       if (prefs.getBoolean(PREF_APP_LOVE_CLICKED, false)) {
                           showRateDialog(reactContext, editor);
-                      } else {
-                          showLoveDialog(reactContext, editor);
                       }
         }
       }
@@ -249,53 +243,5 @@ public class RNAppiraterModule extends ReactContextBaseJavaModule {
 
         dialog.setContentView(layout);        
         dialog.show();        
-    }
-
-    private static void showLoveDialog(final ReactApplicationContext reactContext, final SharedPreferences.Editor editor) {
-
-        final Dialog dialog = new Dialog(reactContext);
-        LinearLayout layout = (LinearLayout) LayoutInflater.from(reactContext).inflate(R.layout.loveapp, null);
-
-        TextView textView = (TextView)layout.findViewById(R.id.love_dialog_message);
-        Button yesButton = (Button)layout.findViewById(R.id.love_dialog_yes);
-        Button noButton = (Button)layout.findViewById(R.id.love_dialog_no);
-
-        textView.setText(String.format(reactContext.getString(R.string.love_dialog_content)));
-        yesButton.setText(String.format(reactContext.getString(R.string.love_dialog_yes)));
-        noButton.setText(String.format(reactContext.getString(R.string.love_dialog_no)));
-
-        yesButton.setOnClickListener(new OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                if (editor != null) {
-                    editor.putBoolean(PREF_APP_LOVE_CLICKED, true);
-                    editor.commit();
-                }
-                dialog.dismiss();
-                showRateDialog(reactContext, editor);
-            }
-        });
-
-        noButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (editor != null) {
-                    editor.putBoolean(PREF_DONT_SHOW, true);
-                    editor.commit();
-                }
-                dialog.dismiss();
-
-                Intent intent = new Intent();
-                intent.setAction("com.sbstrm.appirater.Appirater");
-                intent.putExtra("HATE_APP", true);
-                v.getContext().sendBroadcast(intent);
-            }
-        });
-
-
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(layout, dialog.getWindow().getAttributes());
-        dialog.show();
     }
 }
