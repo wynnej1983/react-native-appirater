@@ -76,7 +76,7 @@ public class RNAppiraterModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public static void setDebug(String val) {
+  public static void setDebug(boolean debug) {
     return;
   }
 

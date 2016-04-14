@@ -79,8 +79,15 @@ Copy the /res/values/appirater-settings.xml from the AppiraterAndroid library in
 //import module
 import Appirater from 'react-native-appirater';
 
-//set app id
-`Appirater.setAppId(id);`
+componentWillMount() {
+  //set app id
+  Appirater.setAppId('123');
+  Appirater.setDebug(true);
+  Appirater.appLaunched(true);
+  Appirater.appEnteredForeground(true);
+}
+...
+
 //register user significant event
 `Appirater.userDidSignificantEvent();`
 
