@@ -51,12 +51,6 @@ public class MainActivity extends Activity {
         new RNAppirater()            //  <--- add here
       );
     }
-    
-    @Override  // <--- add this method, the next 4 lines
-    protected void onCreate(Bundle savedInstanceState) {
-      super.onCreate(savedInstanceState);
-      RNAppirater.appLaunched(this);
-    }
   }
 }
 ```
