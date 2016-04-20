@@ -66,7 +66,7 @@ Copy the /res/values/appirater-settings.xml from the AppiraterAndroid library in
 
 To always show the popup for testing purposes set `appirator_test_mode` to true in the copied over appirater-settings.xml file in your project.
 ```
-<bool name="appirator_test_mode">false</bool>
+<bool name="appirator_test_mode">true</bool>
 ```
 
 ### Note on Usage
