@@ -1,5 +1,3 @@
-[![Downloads](http://img.shields.io/npm/dt/react-native-appirater.svg)](https://npmjs.org/package/react-native-appirater)
-
 # react-native-appirater
 react-native wrapper around ios app rating component
 
@@ -66,6 +64,11 @@ public class MainActivity extends Activity {
 
 Copy the /res/values/appirater-settings.xml from the AppiraterAndroid library in to your projects /res/values/ folder and adjust the settings to your preference.
 
+To always show the popup for testing purposes set `appirator_test_mode` to true in the copied over appirater-settings.xml file in your project.
+```
+<bool name="appirator_test_mode">false</bool>
+```
+
 ### Note on Usage
 
 ### Example
@@ -85,6 +88,7 @@ componentWillMount() {
 ...
 
 //register user significant event
-`Appirater.userDidSignificantEvent();`
+...
+Appirater.userDidSignificantEvent();
 
 ```
