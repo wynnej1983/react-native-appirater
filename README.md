@@ -1,3 +1,5 @@
+[![Downloads](http://img.shields.io/npm/dt/react-native-appirater.svg)](https://npmjs.org/package/react-native-appirater)
+
 # react-native-appirater
 react-native wrapper around ios app rating component
 
